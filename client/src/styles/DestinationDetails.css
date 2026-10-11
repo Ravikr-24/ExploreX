@@ -1,0 +1,1783 @@
+/* =========================================================
+   DESTINATION DETAILS PAGE
+========================================================= */
+
+.destination-details-page {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 50px 24px 70px;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   STATUS / ERROR
+========================================================= */
+
+.status-message,
+.error-message {
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.status-message {
+  color: #64748b;
+  background: #f8fafc;
+}
+
+.error-message {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+
+/* =========================================================
+   DESTINATION GALLERY
+========================================================= */
+
+.destination-gallery-section {
+  margin-bottom: 45px;
+}
+
+.destination-gallery {
+  position: relative;
+  width: 100%;
+}
+
+.destination-gallery-main {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 520px;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  border-radius: 20px;
+  background: #e2e8f0;
+  cursor: zoom-in;
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
+}
+
+.destination-gallery-main > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.destination-gallery-main:hover > img {
+  transform: scale(1.02);
+}
+
+.destination-gallery-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #64748b;
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   DESTINATION GALLERY ARROWS
+========================================================= */
+
+.destination-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.62);
+  color: #ffffff;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.destination-gallery-arrow:hover {
+  background: rgba(15, 23, 42, 0.85);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.destination-gallery-left {
+  left: 20px;
+}
+
+.destination-gallery-right {
+  right: 20px;
+}
+
+
+/* =========================================================
+   DESTINATION GALLERY COUNTER
+========================================================= */
+
+.destination-gallery-counter {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 3;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  backdrop-filter: blur(5px);
+}
+
+
+/* =========================================================
+   DESTINATION THUMBNAILS
+========================================================= */
+
+.destination-gallery-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.destination-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 85px;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: #e2e8f0;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.destination-thumbnail:hover {
+  transform: translateY(-2px);
+}
+
+.destination-thumbnail.active {
+  border-color: #2563eb;
+}
+
+.destination-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   THUMBNAIL MORE OVERLAY
+========================================================= */
+
+.thumbnail-more {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.62);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   VIEW ALL BUTTON
+========================================================= */
+
+.view-all-images-button {
+  display: block;
+  margin: 15px auto 0;
+  padding: 10px 18px;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.view-all-images-button:hover {
+  background: #2563eb;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   DESTINATION INFORMATION
+========================================================= */
+
+.destination-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: 55px;
+}
+
+.destination-details-content {
+  padding: 10px 0;
+}
+
+.destination-details-category {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.destination-details-content h1 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 44px;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.destination-details-location {
+  margin: 0 0 20px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.destination-details-description {
+  max-width: 900px;
+  margin: 0 0 30px;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   DESTINATION INFO GRID
+========================================================= */
+
+.destination-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.destination-info-grid > div {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.destination-info-grid span {
+  display: block;
+  margin-bottom: 7px;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.destination-info-grid strong {
+  display: block;
+  color: #1e293b;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   FAVORITE BUTTON
+========================================================= */
+
+.favorite-button {
+  margin-top: 25px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 9px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.favorite-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
+}
+
+.favorite-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* =========================================================
+   DESTINATION CONTENT SECTIONS
+========================================================= */
+
+.destination-details-section {
+  margin-bottom: 60px;
+}
+
+.section-heading {
+  margin-bottom: 25px;
+}
+
+.section-label {
+  margin: 0 0 8px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.destination-details-section h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+
+/* =========================================================
+   ATTRACTIONS
+========================================================= */
+
+.attractions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.attraction-card {
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.05);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.attraction-card:hover {
+  transform: translateY(-5px);
+  border-color: #bfdbfe;
+  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.1);
+}
+
+.attraction-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 145px;
+  background: #eff6ff;
+  font-size: 42px;
+}
+
+.attraction-content {
+  padding: 17px;
+}
+
+.attraction-content h3 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.attraction-view-button {
+  margin-top: 10px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.attraction-view-button:hover {
+  color: #1d4ed8;
+}
+
+
+/* =========================================================
+   OLD ATTRACTION IMAGE SUPPORT
+========================================================= */
+
+.attraction-image-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 180px;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  background: #e2e8f0;
+  cursor: zoom-in;
+}
+
+.attraction-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.attraction-image-wrapper:hover
+  .attraction-image {
+  transform: scale(1.06);
+}
+
+.attraction-image-count {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.attraction-view-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.45);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.attraction-image-wrapper:hover
+  .attraction-view-overlay {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   NEW ATTRACTION / ACTIVITY IMAGE PREVIEW
+========================================================= */
+
+.item-gallery-preview {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  width: 100%;
+  height: 145px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: 11px;
+  background: #e2e8f0;
+}
+
+.item-gallery-image-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  background: #e2e8f0;
+  cursor: zoom-in;
+}
+
+.item-gallery-image-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.item-gallery-image-button:hover img {
+  transform: scale(1.06);
+}
+
+.item-gallery-more {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.65);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  backdrop-filter: blur(2px);
+}
+
+
+/* =========================================================
+   ACTIVITIES
+========================================================= */
+
+.activities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.activity-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-3px);
+  border-color: #bfdbfe;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+}
+
+.activity-icon {
+  display: flex;
+  flex: 0 0 85px;
+  align-items: center;
+  justify-content: center;
+  width: 85px;
+  height: 70px;
+  border-radius: 10px;
+  background: #eff6ff;
+  font-size: 30px;
+}
+
+.activity-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.activity-content h3 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 17px;
+}
+
+.activity-view-button {
+  margin-top: 8px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.activity-view-button:hover {
+  color: #1d4ed8;
+}
+
+
+/* =========================================================
+   ACTIVITY IMAGE
+========================================================= */
+
+.activity-image-wrapper {
+  position: relative;
+  flex: 0 0 120px;
+  width: 120px;
+  height: 90px;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  border-radius: 10px;
+  background: #e2e8f0;
+  cursor: zoom-in;
+}
+
+.activity-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.activity-image-wrapper:hover
+  .activity-image {
+  transform: scale(1.06);
+}
+
+.activity-image-count {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.activity-view-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.45);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.activity-image-wrapper:hover
+  .activity-view-overlay {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   ACTIVITY 3-IMAGE PREVIEW
+========================================================= */
+
+.activity-item-gallery-preview {
+  flex: 0 0 120px;
+  width: 120px;
+  height: 90px;
+  margin-bottom: 0;
+  border-radius: 10px;
+}
+
+.activity-item-gallery-preview
+  .item-gallery-image-button {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   EMPTY SECTION
+========================================================= */
+
+.empty-section-state {
+  padding: 30px 20px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.empty-section-state p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   REVIEWS SECTION
+========================================================= */
+
+.reviews-section {
+  margin-top: 65px;
+  padding: 35px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 7px 22px rgba(15, 23, 42, 0.05);
+}
+
+.reviews-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.reviews-label {
+  margin: 0 0 8px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.reviews-header h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 30px;
+}
+
+.reviews-rating-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.reviews-rating-summary strong {
+  color: #0f172a;
+  font-size: 22px;
+}
+
+.reviews-rating-summary span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   REVIEW MESSAGES
+========================================================= */
+
+.review-message {
+  margin-bottom: 18px;
+  padding: 13px 15px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.review-message.error {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.review-message.success {
+  border: 1px solid #bbf7d0;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+
+/* =========================================================
+   REVIEW FORM
+========================================================= */
+
+.review-form-card {
+  margin-bottom: 35px;
+  padding: 25px;
+  border: 1px solid #e2e8f0;
+  border-radius: 13px;
+  background: #f8fafc;
+}
+
+.review-form-card h3 {
+  margin: 0 0 20px;
+  color: #0f172a;
+  font-size: 20px;
+}
+
+.review-form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rating-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rating-input label,
+.review-comment-group label {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.rating-buttons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rating-star {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #cbd5e1;
+  font-size: 29px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.rating-star:hover {
+  color: #f59e0b;
+  transform: scale(1.08);
+}
+
+.rating-star.active {
+  color: #f59e0b;
+}
+
+.review-comment-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.review-comment-group textarea,
+.review-edit-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  outline: none;
+  background: #ffffff;
+  color: #1e293b;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.review-comment-group textarea {
+  min-height: 120px;
+}
+
+.review-comment-group textarea:focus,
+.review-edit-form textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.review-comment-group small {
+  align-self: flex-end;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.submit-review-button {
+  align-self: flex-start;
+  padding: 11px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.submit-review-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.submit-review-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* =========================================================
+   LOGIN REVIEW MESSAGE
+========================================================= */
+
+.login-review-message {
+  margin-bottom: 35px;
+  padding: 22px;
+  border: 1px solid #dbeafe;
+  border-radius: 11px;
+  background: #eff6ff;
+  text-align: center;
+}
+
+.login-review-message p {
+  margin: 0 0 12px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.login-review-message a {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.login-review-message a:hover {
+  background: #1d4ed8;
+}
+
+
+/* =========================================================
+   REVIEWS LIST
+========================================================= */
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.no-reviews {
+  padding: 30px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 11px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.no-reviews h3 {
+  margin: 0 0 8px;
+  color: #334155;
+  font-size: 18px;
+}
+
+.no-reviews p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   REVIEW CARD
+========================================================= */
+
+.review-card {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.review-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.review-avatar {
+  display: flex;
+  flex: 0 0 40px;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #dbeafe;
+  color: #2563eb;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.review-user h4 {
+  margin: 0 0 3px;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.review-user span {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.review-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star {
+  color: #cbd5e1;
+  font-size: 16px;
+}
+
+.star.filled {
+  color: #f59e0b;
+}
+
+.review-comment {
+  margin: 0;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   REVIEW ACTIONS
+========================================================= */
+
+.review-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.review-actions button {
+  padding: 6px 11px;
+  border: none;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.review-actions button:hover {
+  background: #e2e8f0;
+}
+
+.review-actions button:last-child {
+  color: #dc2626;
+}
+
+.review-actions button:last-child:hover {
+  background: #fef2f2;
+}
+
+
+/* =========================================================
+   REVIEW EDIT FORM
+========================================================= */
+
+.review-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.review-edit-form textarea {
+  min-height: 100px;
+}
+
+.review-edit-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.save-review-button,
+.cancel-review-button {
+  padding: 9px 15px;
+  border: none;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.save-review-button {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.save-review-button:hover {
+  background: #1d4ed8;
+}
+
+.cancel-review-button {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.cancel-review-button:hover {
+  background: #cbd5e1;
+}
+
+.save-review-button:disabled,
+.cancel-review-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.destination-details-actions {
+  margin-top: 30px;
+}
+
+.destination-details-actions a,
+.destination-details-page > a {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.destination-details-actions a:hover,
+.destination-details-page > a:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   DESTINATION FULLSCREEN IMAGE VIEWER
+========================================================= */
+
+.image-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+  background: rgba(2, 6, 23, 0.94);
+  backdrop-filter: blur(6px);
+}
+
+.image-viewer-image {
+  display: block;
+  max-width: min(92vw, 1200px);
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.image-viewer-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.image-viewer-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.image-viewer-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  font-size: 38px;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.image-viewer-arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.image-viewer-left {
+  left: 25px;
+}
+
+.image-viewer-right {
+  right: 25px;
+}
+
+.image-viewer-counter {
+  position: absolute;
+  left: 50%;
+  bottom: 25px;
+  transform: translateX(-50%);
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   ITEM FULLSCREEN IMAGE VIEWER
+   ATTRACTION / ACTIVITY
+========================================================= */
+
+.item-image-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  box-sizing: border-box;
+  background: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(6px);
+}
+
+.item-image-viewer-image {
+  display: block;
+  max-width: min(90vw, 1100px);
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.item-image-viewer-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.item-image-viewer-close:hover {
+  background: rgba(255, 255, 255, 0.23);
+}
+
+.item-image-viewer-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  font-size: 38px;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.item-image-viewer-arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.item-image-viewer-left {
+  left: 25px;
+}
+
+.item-image-viewer-right {
+  right: 25px;
+}
+
+.item-image-viewer-counter {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.item-image-viewer-title {
+  position: absolute;
+  left: 50%;
+  bottom: 62px;
+  max-width: 80%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY / FOCUS
+========================================================= */
+
+.destination-gallery-main:focus-visible,
+.destination-gallery-arrow:focus-visible,
+.destination-thumbnail:focus-visible,
+.view-all-images-button:focus-visible,
+.item-gallery-image-button:focus-visible,
+.favorite-button:focus-visible,
+.rating-star:focus-visible,
+.submit-review-button:focus-visible,
+.review-actions button:focus-visible,
+.save-review-button:focus-visible,
+.cancel-review-button:focus-visible,
+.image-viewer-close:focus-visible,
+.image-viewer-arrow:focus-visible,
+.item-image-viewer-close:focus-visible,
+.item-image-viewer-arrow:focus-visible,
+.attraction-view-button:focus-visible,
+.activity-view-button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — 1000px
+========================================================= */
+
+@media (max-width: 1000px) {
+  .destination-details-page {
+    padding: 45px 22px 60px;
+  }
+
+  .destination-gallery-main {
+    height: 460px;
+  }
+
+  .attractions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 800px
+========================================================= */
+
+@media (max-width: 800px) {
+  .destination-gallery-main {
+    height: 400px;
+  }
+
+  .destination-details-content h1 {
+    font-size: 36px;
+  }
+
+  .destination-info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .destination-gallery-thumbnails {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .reviews-section {
+    padding: 25px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 700px
+========================================================= */
+
+@media (max-width: 700px) {
+  .reviews-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .reviews-rating-summary {
+    align-items: flex-start;
+  }
+
+  .review-card-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .review-stars {
+    margin-left: 52px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 600px
+========================================================= */
+
+@media (max-width: 600px) {
+  .destination-details-page {
+    padding: 35px 16px 50px;
+  }
+
+  .destination-gallery-main {
+    height: 280px;
+    border-radius: 15px;
+  }
+
+  .destination-gallery-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+  }
+
+  .destination-gallery-left {
+    left: 12px;
+  }
+
+  .destination-gallery-right {
+    right: 12px;
+  }
+
+  .destination-gallery-counter {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .destination-gallery-thumbnails {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .destination-thumbnail {
+    height: 70px;
+  }
+
+  .destination-details-content h1 {
+    font-size: 30px;
+  }
+
+  .destination-details-description {
+    font-size: 15px;
+  }
+
+  .destination-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .destination-details-section h2,
+  .reviews-header h2 {
+    font-size: 25px;
+  }
+
+  .attractions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .item-gallery-preview {
+    height: 190px;
+  }
+
+  .activity-item-gallery-preview {
+    flex-basis: 105px;
+    width: 105px;
+    height: 82px;
+  }
+
+  .activity-icon {
+    flex-basis: 75px;
+    width: 75px;
+    height: 65px;
+  }
+
+  .reviews-section {
+    padding: 20px;
+  }
+
+  .review-form-card {
+    padding: 18px;
+  }
+
+  .rating-star {
+    font-size: 27px;
+  }
+
+  .review-edit-actions {
+    flex-direction: column;
+  }
+
+  .save-review-button,
+  .cancel-review-button {
+    width: 100%;
+  }
+
+  .image-viewer {
+    padding: 25px 15px;
+  }
+
+  .image-viewer-image {
+    max-width: 95vw;
+    max-height: 75vh;
+  }
+
+  .image-viewer-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 32px;
+  }
+
+  .image-viewer-left {
+    left: 10px;
+  }
+
+  .image-viewer-right {
+    right: 10px;
+  }
+
+  .item-image-viewer {
+    padding: 25px 15px;
+  }
+
+  .item-image-viewer-image {
+    max-width: 95vw;
+    max-height: 72vh;
+  }
+
+  .item-image-viewer-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 32px;
+  }
+
+  .item-image-viewer-left {
+    left: 10px;
+  }
+
+  .item-image-viewer-right {
+    right: 10px;
+  }
+
+  .item-image-viewer-title {
+    bottom: 60px;
+    max-width: 75%;
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 420px
+========================================================= */
+
+@media (max-width: 420px) {
+  .destination-details-page {
+    padding: 28px 13px 45px;
+  }
+
+  .destination-gallery-main {
+    height: 235px;
+    border-radius: 13px;
+  }
+
+  .destination-gallery-thumbnails {
+    gap: 6px;
+  }
+
+  .destination-thumbnail {
+    height: 62px;
+    border-radius: 8px;
+  }
+
+  .destination-details-content h1 {
+    font-size: 27px;
+  }
+
+  .destination-details-location {
+    font-size: 14px;
+  }
+
+  .destination-details-description {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .destination-info-grid > div {
+    padding: 15px;
+  }
+
+  .item-gallery-preview {
+    height: 175px;
+  }
+
+  .activity-card {
+    gap: 11px;
+    padding: 11px;
+  }
+
+  .activity-item-gallery-preview {
+    flex-basis: 90px;
+    width: 90px;
+    height: 75px;
+  }
+
+  .activity-content h3 {
+    font-size: 15px;
+  }
+
+  .activity-view-button {
+    font-size: 12px;
+  }
+
+  .reviews-section {
+    padding: 16px;
+    border-radius: 13px;
+  }
+
+  .reviews-header h2 {
+    font-size: 23px;
+  }
+
+  .review-card {
+    padding: 16px;
+  }
+
+  .review-actions {
+    flex-wrap: wrap;
+  }
+
+  .image-viewer-close,
+  .item-image-viewer-close {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+  }
+
+  .image-viewer-counter,
+  .item-image-viewer-counter {
+    bottom: 15px;
+  }
+
+  .item-image-viewer-title {
+    bottom: 52px;
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .destination-gallery-main > img,
+  .destination-thumbnail,
+  .destination-gallery-arrow,
+  .item-gallery-image-button img,
+  .attraction-card,
+  .activity-card,
+  .activity-image,
+  .favorite-button,
+  .view-all-images-button {
+    transition: none;
+  }
+}

@@ -1,0 +1,836 @@
+/* ========================================
+   TRAVEL PLANS PAGE
+======================================== */
+
+.travel-plans-page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 55px 24px 80px;
+}
+
+/* ========================================
+   PAGE HEADER
+======================================== */
+
+.travel-plans-header {
+  max-width: 720px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.travel-plans-label {
+  margin: 0 0 10px;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.travel-plans-header h1 {
+  margin: 0 0 14px;
+  color: #0f172a;
+  font-size: 44px;
+  line-height: 1.15;
+  font-weight: 800;
+}
+
+.travel-plans-header > p:last-child {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   SUCCESS / ERROR MESSAGES
+======================================== */
+
+.travel-plan-message {
+  margin-bottom: 22px;
+  padding: 14px 17px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.travel-plan-message.error {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.travel-plan-message.success {
+  border: 1px solid #bbf7d0;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+/* ========================================
+   FORM SECTION
+======================================== */
+
+.travel-plan-form-section {
+  margin-bottom: 55px;
+  padding: 32px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+.travel-plan-form-header {
+  margin-bottom: 28px;
+}
+
+.travel-plan-form-header h2 {
+  margin: 0 0 7px;
+  color: #0f172a;
+  font-size: 26px;
+  line-height: 1.3;
+}
+
+.travel-plan-form-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.travel-plan-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ========================================
+   FORM GROUP
+======================================== */
+
+.travel-plan-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.travel-plan-form .form-group label {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.travel-plan-form .form-group input,
+.travel-plan-form .form-group textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #1e293b;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.travel-plan-form .form-group input {
+  min-height: 46px;
+  padding: 12px 14px;
+}
+
+.travel-plan-form .form-group textarea {
+  min-height: 110px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.travel-plan-form .form-group input::placeholder,
+.travel-plan-form .form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+.travel-plan-form .form-group input:focus,
+.travel-plan-form .form-group textarea:focus {
+  border-color: #2563eb;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* ========================================
+   LOADING
+======================================== */
+
+.form-loading {
+  margin: 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* ========================================
+   DATE ROW
+======================================== */
+
+.travel-plan-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* ========================================
+   DESTINATION SEARCH
+======================================== */
+
+#destination-search {
+  margin-bottom: 4px;
+}
+
+/* ========================================
+   DESTINATION SELECTION LIST
+======================================== */
+
+.destination-selection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 270px;
+  overflow-y: auto;
+  padding: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.destination-selection-list::-webkit-scrollbar {
+  width: 7px;
+}
+
+.destination-selection-list::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.destination-selection-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.destination-selection-list::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ========================================
+   DESTINATION ITEM
+======================================== */
+
+.destination-selection-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  min-height: 66px;
+  padding: 12px 14px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #334155;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.destination-selection-item:hover {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+.destination-selection-item.selected {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.destination-selection-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.destination-selection-item strong {
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.destination-selection-item span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.destination-selection-item small {
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.destination-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border: 1px solid #bfdbfe;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #2563eb !important;
+  font-size: 17px !important;
+  font-weight: 800;
+}
+
+/* ========================================
+   NO RESULT
+======================================== */
+
+.no-destination-result {
+  margin: 0;
+  padding: 25px 15px;
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ========================================
+   SELECTED DESTINATIONS
+======================================== */
+
+.selected-destinations {
+  margin-top: 12px;
+}
+
+.selected-destinations p {
+  margin: 0 0 9px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.selected-destination-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.selected-destination-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px 7px 12px;
+  border: 1px solid #bfdbfe;
+  border-radius: 20px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.selected-destination-tag button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #2563eb;
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.selected-destination-tag button:hover {
+  background: #dbeafe;
+}
+
+/* ========================================
+   FORM ACTIONS
+======================================== */
+
+.travel-plan-form-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 3px;
+}
+
+.create-plan-button {
+  min-height: 46px;
+  padding: 12px 21px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.create-plan-button:hover {
+  background: #1d4ed8;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.2);
+  transform: translateY(-1px);
+}
+
+.create-plan-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.cancel-edit-button {
+  min-height: 46px;
+  padding: 11px 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cancel-edit-button:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+
+.cancel-edit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   SAVED PLANS
+======================================== */
+
+.travel-plans-list-section {
+  width: 100%;
+}
+
+.travel-plans-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.travel-plans-list-header h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+.travel-plans-list-header > span {
+  padding: 7px 13px;
+  border: 1px solid #bfdbfe;
+  border-radius: 20px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ========================================
+   PLANS GRID
+======================================== */
+
+.travel-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    minmax(0, 1fr)
+  );
+  gap: 24px;
+}
+
+/* ========================================
+   PLAN CARD
+======================================== */
+
+.travel-plan-card {
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.travel-plan-card:hover {
+  border-color: #dbeafe;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+  transform: translateY(-3px);
+}
+
+/* ========================================
+   CARD HEADER
+======================================== */
+
+.travel-plan-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.travel-plan-card-header h3 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+/* ========================================
+   CARD ACTIONS
+======================================== */
+
+.travel-plan-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.edit-plan-button {
+  padding: 7px 11px;
+  border: 1px solid #bfdbfe;
+  border-radius: 7px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.edit-plan-button:hover {
+  border-color: #93c5fd;
+  background: #dbeafe;
+}
+
+.delete-plan-button {
+  padding: 7px 11px;
+  border: 1px solid #fecaca;
+  border-radius: 7px;
+  background: #fef2f2;
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.delete-plan-button:hover {
+  border-color: #fca5a5;
+  background: #fee2e2;
+}
+
+/* ========================================
+   PLAN DETAILS
+======================================== */
+
+.travel-plan-detail {
+  margin-top: 18px;
+}
+
+.travel-plan-detail strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.travel-plan-detail p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* ========================================
+   DESTINATION TAGS
+======================================== */
+
+.plan-destinations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.plan-destinations span {
+  padding: 6px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+
+.travel-plans-empty {
+  padding: 48px 25px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: center;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.04);
+}
+
+.travel-plans-empty h1,
+.travel-plans-empty h3 {
+  margin: 0 0 10px;
+  color: #0f172a;
+}
+
+.travel-plans-empty h3 {
+  font-size: 21px;
+}
+
+.travel-plans-empty p {
+  margin: 0 0 20px;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.travel-plans-empty a {
+  display: inline-block;
+  padding: 10px 17px;
+  border-radius: 9px;
+  background: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.travel-plans-empty a:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   LOADING
+======================================== */
+
+.travel-plans-page .status-message {
+  padding: 25px;
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ========================================
+   RESPONSIVE - TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .travel-plans-page {
+    max-width: 100%;
+    padding: 45px 22px 70px;
+  }
+
+  .travel-plans-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+  .travel-plans-header {
+    margin-bottom: 32px;
+  }
+
+  .travel-plans-header h1 {
+    font-size: 36px;
+  }
+
+  .travel-plans-header > p:last-child {
+    font-size: 15px;
+  }
+
+  .travel-plan-form-section {
+    padding: 24px;
+  }
+
+  .travel-plan-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .travel-plan-card-header {
+    flex-direction: column;
+  }
+
+  .travel-plan-card-actions {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - SMALL MOBILE
+======================================== */
+
+@media (max-width: 500px) {
+  .travel-plans-page {
+    padding: 35px 15px 55px;
+  }
+
+  .travel-plans-header h1 {
+    font-size: 30px;
+  }
+
+  .travel-plans-label {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+
+  .travel-plan-form-section {
+    padding: 19px;
+    border-radius: 14px;
+  }
+
+  .travel-plan-form-header h2 {
+    font-size: 22px;
+  }
+
+  .travel-plans-list-header {
+    align-items: flex-start;
+  }
+
+  .travel-plans-list-header h2 {
+    font-size: 23px;
+  }
+
+  .travel-plan-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .travel-plan-card-actions {
+    width: 100%;
+  }
+
+  .edit-plan-button,
+  .delete-plan-button {
+    flex: 1;
+  }
+
+  .travel-plan-form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .create-plan-button,
+  .cancel-edit-button {
+    width: 100%;
+  }
+
+  .destination-selection-list {
+    max-height: 230px;
+  }
+
+  .destination-selection-item {
+    min-height: 62px;
+    padding: 11px;
+  }
+}
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 380px) {
+  .travel-plans-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .travel-plan-form-section {
+    padding: 16px;
+  }
+
+  .travel-plan-card {
+    padding: 17px;
+  }
+
+  .travel-plans-header h1 {
+    font-size: 27px;
+  }
+
+  .travel-plan-card-header h3 {
+    font-size: 19px;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .travel-plan-card,
+  .destination-selection-item,
+  .create-plan-button,
+  .travel-plans-empty a {
+    transition: none;
+  }
+
+  .travel-plan-card:hover,
+  .destination-selection-item:hover,
+  .create-plan-button:hover,
+  .travel-plans-empty a:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,335 @@
+/* =================================
+   Add Destination Page
+================================= */
+
+.add-destination-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* =================================
+   Header
+================================= */
+
+.add-destination-header {
+  margin-bottom: 36px;
+}
+
+.add-destination-label {
+  margin: 0 0 8px;
+  color: #2563eb;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.add-destination-header h1 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.add-destination-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* =================================
+   Form Card
+================================= */
+
+.add-destination-form {
+  padding: 32px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+/* =================================
+   Form Group
+================================= */
+
+.add-destination-group {
+  margin-bottom: 24px;
+}
+
+.add-destination-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #0f172a;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.add-destination-group input,
+.add-destination-group textarea,
+.add-destination-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  outline: none;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 0.95rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.add-destination-group input {
+  min-height: 46px;
+}
+
+.add-destination-group textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.add-destination-group input:focus,
+.add-destination-group textarea:focus,
+.add-destination-group select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.add-destination-group input::placeholder,
+.add-destination-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* =================================
+   Helper Text
+================================= */
+
+.add-destination-help {
+  display: block;
+  margin-top: 7px;
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.add-destination-help strong {
+  color: #334155;
+}
+
+/* =================================
+   Two Column Row
+================================= */
+
+.add-destination-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* =================================
+   Section Divider
+================================= */
+
+.add-destination-section {
+  margin: 34px 0;
+  padding-top: 30px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.add-destination-section-title {
+  margin: 0 0 6px;
+  color: #0f172a;
+  font-size: 1.2rem;
+}
+
+.add-destination-section-description {
+  margin: 0 0 22px;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* =================================
+   Format Hint
+================================= */
+
+.add-destination-format {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-left: 3px solid #2563eb;
+  border-radius: 6px;
+  background: #eff6ff;
+  color: #475569;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+/* =================================
+   Messages
+================================= */
+
+.add-destination-message {
+  margin-bottom: 22px;
+  padding: 13px 16px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.add-destination-error {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.add-destination-success {
+  border: 1px solid #bbf7d0;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+/* =================================
+   Submit Area
+================================= */
+
+.add-destination-submit-area {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.add-destination-cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 130px;
+  min-height: 46px;
+  padding: 10px 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #475569;
+  text-decoration: none;
+  font-weight: 700;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.add-destination-cancel:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.add-destination-submit {
+  min-width: 170px;
+  min-height: 46px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.add-destination-submit:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
+}
+
+.add-destination-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* =================================
+   Loading
+================================= */
+
+.add-destination-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-destination-spinner {
+  width: 17px;
+  height: 17px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: addDestinationSpin 0.7s linear infinite;
+}
+
+@keyframes addDestinationSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =================================
+   Responsive
+================================= */
+
+@media (max-width: 700px) {
+  .add-destination-page {
+    padding: 40px 16px 60px;
+  }
+
+  .add-destination-form {
+    padding: 24px 20px;
+  }
+
+  .add-destination-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .add-destination-page {
+    padding: 30px 14px 50px;
+  }
+
+  .add-destination-form {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .add-destination-submit-area {
+    flex-direction: column-reverse;
+  }
+
+  .add-destination-submit,
+  .add-destination-cancel {
+    width: 100%;
+  }
+}
+
+/* =================================
+   Reduced Motion
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .add-destination-group input,
+  .add-destination-group textarea,
+  .add-destination-group select,
+  .add-destination-cancel,
+  .add-destination-submit {
+    transition: none;
+  }
+
+  .add-destination-spinner {
+    animation: none;
+  }
+}

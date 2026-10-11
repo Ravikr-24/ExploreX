@@ -1,0 +1,347 @@
+/* ========================================
+   EXPLOREX NAVBAR
+======================================== */
+
+.navbar {
+    width: 100%;
+
+    background:
+        linear-gradient(90deg,
+            #dbeafe 0%,
+            #e0e7ff 30%,
+            #ede9fe 60%,
+            #cffafe 100%);
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 4px 18px rgba(15, 23, 42, 0.07);
+}
+
+/* Main container */
+
+.navbar-container {
+    max-width: 1280px;
+    min-height: 74px;
+    margin: 0 auto;
+    padding: 0 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* ========================================
+   LOGO
+======================================== */
+
+.navbar-logo {
+    color: #2563eb;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.navbar-logo:hover {
+    color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+/* ========================================
+   NAVIGATION LINKS
+======================================== */
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.navbar-link {
+    position: relative;
+
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    padding: 9px 13px;
+    border-radius: 8px;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+/* Hover background */
+
+.navbar-link:hover {
+    color: #2563eb;
+    background: #eff6ff;
+}
+
+/* Active-style underline effect */
+
+.navbar-link::after {
+    content: "";
+    position: absolute;
+
+    left: 13px;
+    right: 13px;
+    bottom: 4px;
+
+    height: 2px;
+
+    background: #2563eb;
+    border-radius: 10px;
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: transform 0.2s ease;
+}
+
+.navbar-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* ========================================
+   RIGHT SIDE ACTIONS
+======================================== */
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Logged-in user */
+
+.navbar-user {
+    color: #334155;
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    padding: 8px 10px;
+}
+
+/* ========================================
+   COMMON BUTTON STYLES
+======================================== */
+
+.login-button,
+.register-button,
+.logout-button {
+    border-radius: 8px;
+
+    padding: 9px 16px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* ========================================
+   LOGIN
+======================================== */
+
+.login-button {
+    color: #2563eb;
+    background: #ffffff;
+
+    border: 1px solid #bfdbfe;
+}
+
+.login-button:hover {
+    color: #1d4ed8;
+    background: #eff6ff;
+    border-color: #2563eb;
+
+    transform: translateY(-1px);
+}
+
+/* ========================================
+   REGISTER
+======================================== */
+
+.register-button {
+    color: #ffffff;
+    background: #2563eb;
+
+    border: 1px solid #2563eb;
+
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.18);
+}
+
+.register-button:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+/* ========================================
+   LOGOUT
+======================================== */
+
+.logout-button {
+    color: #ffffff;
+    background: #ef4444;
+
+    border: 1px solid #ef4444;
+}
+
+.logout-button:hover {
+    background: #dc2626;
+    border-color: #dc2626;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2);
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .navbar-container {
+        gap: 18px;
+        padding: 0 20px;
+    }
+
+    .navbar-links {
+        gap: 2px;
+    }
+
+    .navbar-link {
+        padding: 8px 9px;
+        font-size: 13px;
+    }
+
+    .navbar-actions {
+        gap: 7px;
+    }
+
+    .login-button,
+    .register-button,
+    .logout-button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .navbar-user {
+        font-size: 13px;
+    }
+}
+
+/* ========================================
+   MOBILE / SMALL TABLET
+======================================== */
+
+@media (max-width: 760px) {
+
+    .navbar-container {
+        min-height: auto;
+        padding: 14px 18px;
+
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .navbar-logo {
+        width: 100%;
+        text-align: center;
+
+        font-size: 26px;
+    }
+
+    .navbar-links {
+        order: 3;
+
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .navbar-link {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .navbar-actions {
+        justify-content: center;
+    }
+
+    .navbar-user {
+        display: none;
+    }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+    .navbar-container {
+        padding: 12px 12px;
+        gap: 10px;
+    }
+
+    .navbar-logo {
+        font-size: 24px;
+    }
+
+    .navbar-links {
+        gap: 2px;
+    }
+
+    .navbar-link {
+        font-size: 12px;
+        padding: 7px 8px;
+    }
+
+    .login-button,
+    .register-button,
+    .logout-button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .navbar-actions {
+        gap: 6px;
+    }
+}

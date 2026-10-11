@@ -1,0 +1,337 @@
+/* =================================
+   Edit Destination Page
+================================= */
+
+.edit-destination-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* =================================
+   Header
+================================= */
+
+.edit-destination-header {
+  margin-bottom: 36px;
+}
+
+.edit-destination-label {
+  margin: 0 0 8px;
+  color: #2563eb;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.edit-destination-header h1 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.edit-destination-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* =================================
+   Form
+================================= */
+
+.edit-destination-form {
+  padding: 32px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+/* =================================
+   Sections
+================================= */
+
+.edit-destination-section {
+  margin-bottom: 34px;
+}
+
+.edit-destination-section + .edit-destination-section {
+  padding-top: 30px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.edit-destination-section-title {
+  margin: 0 0 6px;
+  color: #0f172a;
+  font-size: 1.2rem;
+}
+
+.edit-destination-section-description {
+  margin: 0 0 22px;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* =================================
+   Form Groups
+================================= */
+
+.edit-destination-group {
+  margin-bottom: 24px;
+}
+
+.edit-destination-group:last-child {
+  margin-bottom: 0;
+}
+
+.edit-destination-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #0f172a;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.edit-destination-group input,
+.edit-destination-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  outline: none;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 0.95rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.edit-destination-group input {
+  min-height: 46px;
+}
+
+.edit-destination-group textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.edit-destination-group input:focus,
+.edit-destination-group textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.edit-destination-group input::placeholder,
+.edit-destination-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* =================================
+   Two Column Layout
+================================= */
+
+.edit-destination-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* =================================
+   Helper Text
+================================= */
+
+.edit-destination-help {
+  display: block;
+  margin-top: 7px;
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.edit-destination-help strong {
+  color: #334155;
+}
+
+/* =================================
+   Format Hint
+================================= */
+
+.edit-destination-format {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-left: 3px solid #2563eb;
+  border-radius: 6px;
+  background: #eff6ff;
+  color: #475569;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+/* =================================
+   Messages
+================================= */
+
+.edit-destination-message {
+  margin-bottom: 22px;
+  padding: 13px 16px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.edit-destination-error {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.edit-destination-success {
+  border: 1px solid #bbf7d0;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+/* =================================
+   Action Area
+================================= */
+
+.edit-destination-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.edit-destination-cancel,
+.edit-destination-submit {
+  min-width: 150px;
+  min-height: 46px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.edit-destination-cancel {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+}
+
+.edit-destination-cancel:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.edit-destination-submit {
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.edit-destination-submit:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
+}
+
+.edit-destination-cancel:disabled,
+.edit-destination-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* =================================
+   Loading
+================================= */
+
+.edit-destination-loading {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  color: #64748b;
+}
+
+.edit-destination-spinner {
+  width: 38px;
+  height: 38px;
+  border: 4px solid #dbeafe;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: editDestinationSpin 0.8s linear infinite;
+}
+
+@keyframes editDestinationSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =================================
+   Responsive
+================================= */
+
+@media (max-width: 700px) {
+  .edit-destination-page {
+    padding: 40px 16px 60px;
+  }
+
+  .edit-destination-form {
+    padding: 24px 20px;
+  }
+
+  .edit-destination-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .edit-destination-page {
+    padding: 30px 14px 50px;
+  }
+
+  .edit-destination-form {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .edit-destination-actions {
+    flex-direction: column-reverse;
+  }
+
+  .edit-destination-submit,
+  .edit-destination-cancel {
+    width: 100%;
+  }
+}
+
+/* =================================
+   Reduced Motion
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .edit-destination-group input,
+  .edit-destination-group textarea,
+  .edit-destination-cancel,
+  .edit-destination-submit {
+    transition: none;
+  }
+
+  .edit-destination-spinner {
+    animation: none;
+  }
+}

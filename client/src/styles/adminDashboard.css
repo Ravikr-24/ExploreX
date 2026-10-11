@@ -1,0 +1,326 @@
+/* ================================
+   Admin Dashboard
+================================ */
+
+.admin-dashboard {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* ================================
+   Header
+================================ */
+
+.admin-dashboard-header {
+  margin-bottom: 40px;
+}
+
+.admin-dashboard-label {
+  margin: 0 0 10px;
+
+  color: #2563eb;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.admin-dashboard-header h1 {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+}
+
+.admin-dashboard-header p {
+  max-width: 650px;
+  margin: 15px 0 0;
+
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ================================
+   Statistics
+================================ */
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+
+  margin-bottom: 55px;
+}
+
+.admin-stat-card {
+  position: relative;
+
+  padding: 28px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.06);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 16px 35px rgba(15, 23, 42, 0.1);
+}
+
+.admin-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  margin-bottom: 18px;
+
+  border-radius: 14px;
+
+  background: #eff6ff;
+
+  font-size: 1.35rem;
+}
+
+.admin-stat-card h2 {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.admin-stat-card p {
+  margin: 9px 0 0;
+
+  color: #64748b;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+/* ================================
+   Management Section
+================================ */
+
+.admin-management {
+  padding: 32px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.05);
+}
+
+.admin-management-header {
+  margin-bottom: 25px;
+}
+
+.admin-management-header h2 {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: 1.5rem;
+}
+
+.admin-management-header p {
+  margin: 8px 0 0;
+
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* ================================
+   Management Links
+================================ */
+
+.admin-management-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.admin-management-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 80px;
+  padding: 18px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+
+  color: #1e293b;
+  background: #f8fafc;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.admin-management-link:hover {
+  border-color: #bfdbfe;
+
+  background: #eff6ff;
+
+  transform: translateY(-2px);
+}
+
+.admin-management-link span:last-child {
+  color: #2563eb;
+  font-size: 1.2rem;
+}
+
+/* ================================
+   Loading
+================================ */
+
+.admin-dashboard-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  min-height: 500px;
+
+  color: #64748b;
+}
+
+.admin-dashboard-spinner {
+  width: 42px;
+  height: 42px;
+
+  margin-bottom: 15px;
+
+  border: 4px solid #dbeafe;
+  border-top-color: #2563eb;
+
+  border-radius: 50%;
+
+  animation: adminDashboardSpin 0.8s linear infinite;
+}
+
+@keyframes adminDashboardSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================================
+   Error
+================================ */
+
+.admin-dashboard-error {
+  max-width: 600px;
+
+  margin: 70px auto;
+  padding: 30px;
+
+  border: 1px solid #fecaca;
+  border-radius: 18px;
+
+  color: #b91c1c;
+  background: #fef2f2;
+
+  text-align: center;
+}
+
+.admin-dashboard-error h1 {
+  margin-top: 0;
+  color: #991b1b;
+}
+
+.admin-dashboard-error p {
+  margin-bottom: 0;
+}
+
+/* ================================
+   Tablet
+================================ */
+
+@media (max-width: 1050px) {
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-management-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ================================
+   Mobile
+================================ */
+
+@media (max-width: 650px) {
+  .admin-dashboard {
+    padding: 40px 18px 60px;
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-management-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-management {
+    padding: 24px 18px;
+  }
+}
+
+@media (max-width: 420px) {
+  .admin-dashboard {
+    padding: 30px 14px 50px;
+  }
+
+  .admin-dashboard-header h1 {
+    font-size: 2rem;
+  }
+
+  .admin-stat-card {
+    padding: 22px;
+  }
+
+  .admin-management-link {
+    min-height: 65px;
+  }
+}
+
+/* ================================
+   Reduced Motion
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-stat-card,
+  .admin-management-link {
+    transition: none;
+  }
+
+  .admin-dashboard-spinner {
+    animation: none;
+  }
+}
