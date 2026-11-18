@@ -23,7 +23,7 @@ api.interceptors.request.use(
   }
 );
 
-// Handle authentication errors
+
 api.interceptors.response.use(
   (response) => {
     return response;

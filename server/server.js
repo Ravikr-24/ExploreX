@@ -1,9 +1,14 @@
+require("dotenv").config();
+require("./config/env");
+
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
-require("dotenv").config();
 
-require("./config/env");
+const imageRoutes = require("./routes/imageRoutes");
+
+
+
 
 const connectDB = require("./config/db");
 const errorMiddleware = require("./middleware/errorMiddleware");
@@ -18,6 +23,7 @@ const reviewRoutes = require("./routes/reviewRoutes");
 const travelPlanRoutes = require("./routes/travelPlanRoutes");
 const userRoutes = require("./routes/userRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+
 
 const protect = require("./middleware/authMiddleware");
 const admin = require("./middleware/adminMiddleware");
@@ -54,6 +60,7 @@ app.use("/api/admin", adminRoutes);
 
 
 
+app.use("/api/images", imageRoutes);
 
 // Test route
 app.get("/", (req, res) => {
@@ -93,6 +100,7 @@ app.use((req, res) => {
 
 // Centralized error handling
 app.use(errorMiddleware);
+
 
 const PORT = process.env.PORT || 5000;
 

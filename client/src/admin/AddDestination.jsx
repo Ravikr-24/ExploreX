@@ -26,22 +26,17 @@ function AddDestination() {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // ========================================
-  // HANDLE INPUT CHANGE
-  // ========================================
+   /* HANDLE INPUT CHANGE */
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormData((previousData) => ({
       ...previousData,
       [name]: value,
     }));
   };
 
-  // ========================================
-  // PARSE ATTRACTIONS / ACTIVITIES
-  // ========================================
+  /*  PARSE ATTRACTIONS / ACTIVITIES */
 
   const parseItemsWithImages = (value) => {
     if (!value.trim()) {
@@ -53,28 +48,17 @@ function AddDestination() {
       .map((item) => item.trim())
       .filter(Boolean)
       .map((item) => {
-        const [namePart, imagesPart = ""] =
-          item.split("|");
-
+        const [namePart, imagesPart = ""] = item.split("|");
         const name = namePart.trim();
-
-        const images = imagesPart
-          .split(",")
-          .map((image) => image.trim())
-          .filter(Boolean)
-          .slice(0, 3);
-
+        const images = imagesPart.split(",").map((image) => image.trim()).filter(Boolean).slice(0, 3);
         return {
-          name,
-          images,
+          name, images,
         };
       })
       .filter((item) => item.name);
   };
 
-  // ========================================
-  // HANDLE SUBMIT
-  // ========================================
+   /* HANDLE SUBMIT */
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -82,7 +66,7 @@ function AddDestination() {
     setError("");
     setSuccess("");
 
-    // Required field validation
+    /* Required field validation */
     if (
       !formData.name.trim() ||
       !formData.description.trim() ||
@@ -96,7 +80,8 @@ function AddDestination() {
       return;
     }
 
-    // Budget validation
+    /*  Budget validation */
+
     const budgetValue = Number(formData.budget);
 
     if (
@@ -107,7 +92,7 @@ function AddDestination() {
       return;
     }
 
-    // Authorization check
+    /* Authorization check */
     if (!token) {
       setError(
         "You are not authorized. Please login again."
@@ -115,47 +100,32 @@ function AddDestination() {
       return;
     }
 
-    // Parse attractions and activities
-    const attractions = parseItemsWithImages(
-      formData.attractions
-    );
+    /*  Parse attractions and activities */
+    const attractions = parseItemsWithImages(formData.attractions);
 
-    const activities = parseItemsWithImages(
-      formData.activities
-    );
+    const activities = parseItemsWithImages(formData.activities);
 
     try {
       setLoading(true);
-
       const destinationData = {
+
         name: formData.name.trim(),
-
         description: formData.description.trim(),
-
         location: formData.location.trim(),
-
         category: formData.category.trim(),
-
         images: formData.images
           .split(",")
           .map((item) => item.trim())
           .filter(Boolean),
-
         attractions,
-
         activities,
 
-        bestTimeToVisit:
-          formData.bestTimeToVisit.trim(),
-
+        bestTimeToVisit: formData.bestTimeToVisit.trim(),
         budget: budgetValue,
-
         rating: 0,
       };
 
-      const response = await api.post(
-        "/destinations",
-        destinationData,
+      const response = await api.post("/destinations", destinationData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -189,35 +159,21 @@ function AddDestination() {
 
   return (
     <main className="add-destination-page">
-      {/* ========================================
-          HEADER
-      ======================================== */}
+
+           {/*  HEADER */}
 
       <header className="add-destination-header">
-        <p className="add-destination-label">
-          EXPLOREX ADMIN PANEL
-        </p>
-
+        <p className="add-destination-label">EXPLOREX ADMIN PANEL</p>
         <h1>Add Destination</h1>
-
         <p>
           Add a new destination to the ExploreX
           collection.
         </p>
       </header>
 
-      {/* ========================================
-          FORM
-      ======================================== */}
+              {/* FORM */}
 
-      <form
-        className="add-destination-form"
-        onSubmit={handleSubmit}
-      >
-        {/* ========================================
-            BASIC INFORMATION
-        ======================================== */}
-
+      <form className="add-destination-form" onSubmit={handleSubmit}>
         <section>
           <h2 className="add-destination-section-title">
             Basic Information
@@ -234,68 +190,31 @@ function AddDestination() {
               Destination Name *
             </label>
 
-            <input
-              id="name"
-              name="name"
-              type="text"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="e.g. Jaipur"
-              required
-            />
+            <input id="name" name="name" type="text" value={formData.name} onChange={handleChange} placeholder="e.g. Jaipur" required />
           </div>
 
-          {/* Description */}
-
           <div className="add-destination-group">
-            <label htmlFor="description">
-              Description *
-            </label>
+            <label htmlFor="description">  Description *</label>
 
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              placeholder="Enter destination description"
-              rows="5"
-              required
-            />
+            <textarea id="description" name="description" value={formData.description} onChange={handleChange}
+              placeholder="Enter destination description" rows="5" required />
           </div>
 
           {/* Location + Category */}
 
           <div className="add-destination-row">
             <div className="add-destination-group">
-              <label htmlFor="location">
-                Location *
-              </label>
+              <label htmlFor="location">Location *</label>
 
-              <input
-                id="location"
-                name="location"
-                type="text"
-                value={formData.location}
-                onChange={handleChange}
-                placeholder="e.g. Rajasthan"
-                required
-              />
+              <input id="location" name="location" type="text" value={formData.location}
+                onChange={handleChange} placeholder="e.g. Rajasthan" required />
             </div>
 
             <div className="add-destination-group">
-              <label htmlFor="category">
-                Category *
-              </label>
+              <label htmlFor="category">Category * </label>
 
-              <input
-                id="category"
-                name="category"
-                type="text"
-                value={formData.category}
-                onChange={handleChange}
-                placeholder="e.g. Historical"
-                required
-              />
+              <input id="category" name="category" type="text" value={formData.category} onChange={handleChange}
+                placeholder="e.g. Historical" required />
             </div>
           </div>
 
@@ -303,20 +222,10 @@ function AddDestination() {
 
           <div className="add-destination-row">
             <div className="add-destination-group">
-              <label htmlFor="budget">
-                Budget *
-              </label>
+              <label htmlFor="budget"> Budget * </label>
 
-              <input
-                id="budget"
-                name="budget"
-                type="number"
-                min="0"
-                value={formData.budget}
-                onChange={handleChange}
-                placeholder="e.g. 15000"
-                required
-              />
+              <input id="budget" name="budget" type="number" min="0" value={formData.budget} onChange={handleChange}
+                placeholder="e.g. 15000" required />
             </div>
 
             <div className="add-destination-group">
@@ -324,44 +233,25 @@ function AddDestination() {
                 Best Time to Visit
               </label>
 
-              <input
-                id="bestTimeToVisit"
-                name="bestTimeToVisit"
-                type="text"
-                value={formData.bestTimeToVisit}
-                onChange={handleChange}
-                placeholder="e.g. October to March"
-              />
+              <input id="bestTimeToVisit" name="bestTimeToVisit" type="text" value={formData.bestTimeToVisit} onChange={handleChange}
+                placeholder="e.g. October to March" />
             </div>
           </div>
         </section>
 
-        {/* ========================================
-            DESTINATION IMAGES
-        ======================================== */}
+
 
         <section className="add-destination-section">
-          <h2 className="add-destination-section-title">
-            Destination Images
-          </h2>
+          <h2 className="add-destination-section-title"> Destination Images </h2>
 
           <p className="add-destination-section-description">
             Add images that represent the destination.
           </p>
 
           <div className="add-destination-group">
-            <label htmlFor="images">
-              Image URLs
-            </label>
+            <label htmlFor="images"> Image URLs </label>
 
-            <input
-              id="images"
-              name="images"
-              type="text"
-              value={formData.images}
-              onChange={handleChange}
-              placeholder="url1, url2, url3"
-            />
+            <input id="images" name="images" type="text" value={formData.images} onChange={handleChange} placeholder="url1, url2, url3" />
 
             <small className="add-destination-help">
               Enter multiple image URLs separated by
@@ -370,9 +260,7 @@ function AddDestination() {
           </div>
         </section>
 
-        {/* ========================================
-            ATTRACTIONS
-        ======================================== */}
+
 
         <section className="add-destination-section">
           <h2 className="add-destination-section-title">
@@ -384,15 +272,9 @@ function AddDestination() {
           </p>
 
           <div className="add-destination-group">
-            <label htmlFor="attractions">
-              Attractions
-            </label>
+            <label htmlFor="attractions"> Attractions </label>
 
-            <textarea
-              id="attractions"
-              name="attractions"
-              value={formData.attractions}
-              onChange={handleChange}
+            <textarea id="attractions" name="attractions" value={formData.attractions} onChange={handleChange}
               placeholder={`Example:
 Hadimba Temple | url1, url2, url3
 Solang Valley | url4, url5
@@ -485,18 +367,9 @@ River Rafting | url6, url7`}
         ======================================== */}
 
         <div className="add-destination-submit-area">
-          <Link
-            to="/admin/destinations"
-            className="add-destination-cancel"
-          >
-            Cancel
-          </Link>
+          <Link to="/admin/destinations" className="add-destination-cancel"> Cancel </Link>
 
-          <button
-            type="submit"
-            className="add-destination-submit"
-            disabled={loading}
-          >
+          <button type="submit" className="add-destination-submit" disabled={loading}>
             {loading ? (
               <span className="add-destination-loading">
                 <span className="add-destination-spinner"></span>

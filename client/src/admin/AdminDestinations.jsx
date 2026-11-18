@@ -14,7 +14,7 @@ function AdminDestinations() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Fetch all destinations
+  /* Fetch all destinations */
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
@@ -25,9 +25,9 @@ function AdminDestinations() {
 
         setDestinations(response.data.destinations || []);
       } catch (error) {
-       setError(
+        setError(
           error.response?.data?.message ||
-            "Failed to load destinations."
+          "Failed to load destinations."
         );
       } finally {
         setLoading(false);
@@ -41,7 +41,7 @@ function AdminDestinations() {
     }
   }, [token]);
 
-  // Delete destination
+   /* Delete destination */
   const handleDelete = async (destinationId) => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this destination?"
@@ -53,9 +53,7 @@ function AdminDestinations() {
 
     try {
       setError("");
-
-      await api.delete(
-        `/destinations/${destinationId}`,
+      await api.delete(`/destinations/${destinationId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -63,7 +61,7 @@ function AdminDestinations() {
         }
       );
 
-      // Remove deleted destination from UI
+      /* Remove deleted destination from UI */
       setDestinations((previousDestinations) =>
         previousDestinations.filter(
           (destination) =>
@@ -73,12 +71,12 @@ function AdminDestinations() {
     } catch (error) {
       setError(
         error.response?.data?.message ||
-          "Failed to delete destination."
+        "Failed to delete destination."
       );
     }
   };
 
-  // Loading state
+   /* Loading state */
   if (loading) {
     return (
       <main className="admin-destinations-loading">
@@ -88,7 +86,7 @@ function AdminDestinations() {
     );
   }
 
-  // Error state
+  /*  Error state */
   if (error && destinations.length === 0) {
     return (
       <main className="admin-destinations">
@@ -96,7 +94,6 @@ function AdminDestinations() {
           <p className="admin-destinations-label">
             EXPLOREX ADMIN PANEL
           </p>
-
           <h1>Manage Destinations</h1>
         </div>
 
@@ -109,14 +106,12 @@ function AdminDestinations() {
 
   return (
     <main className="admin-destinations">
+
       {/* Header */}
+
       <header className="admin-destinations-header">
-        <p className="admin-destinations-label">
-          EXPLOREX ADMIN PANEL
-        </p>
-
+        <p className="admin-destinations-label"> EXPLOREX ADMIN PANEL</p>
         <h1>Manage Destinations</h1>
-
         <p>
           View, edit and manage all ExploreX
           destinations.
@@ -125,10 +120,7 @@ function AdminDestinations() {
 
       {/* Add Destination */}
       <div className="admin-destinations-actions">
-        <Link
-          to="/admin/destinations/add"
-          className="admin-add-destination-button"
-        >
+        <Link to="/admin/destinations/add" className="admin-add-destination-button">
           <span>+</span>
           <span>Add Destination</span>
         </Link>
@@ -142,29 +134,20 @@ function AdminDestinations() {
       )}
 
       {/* Destination List */}
+
       {destinations.length === 0 ? (
         <section className="admin-destinations-empty">
           <h2>No Destinations Found</h2>
-
-          <p>
-            Start by adding your first destination.
-          </p>
+          <p> Start by adding your first destination.</p>
         </section>
       ) : (
         <section className="admin-destinations-grid">
           {destinations.map((destination) => (
-            <article
-              key={destination._id}
-              className="admin-destination-card"
-            >
+            <article key={destination._id} className="admin-destination-card">
               {/* Image */}
               <div className="admin-destination-image-wrapper">
                 {destination.images?.[0] ? (
-                  <img
-                    src={destination.images[0]}
-                    alt={destination.name}
-                    className="admin-destination-image"
-                  />
+                  <img src={destination.images[0]} alt={destination.name} className="admin-destination-image" />
                 ) : (
                   <div className="admin-destination-image-placeholder">
                     <span>🏔️</span>
@@ -213,25 +196,12 @@ function AdminDestinations() {
 
                 {/* Actions */}
                 <div className="admin-destination-actions">
-                  <button
-                    type="button"
-                    className="admin-destination-edit"
-                    onClick={() =>
-                      navigate(
-                        `/admin/destinations/edit/${destination._id}`
-                      )
-                    }
-                  >
+                  <button type="button" className="admin-destination-edit"
+                    onClick={() => navigate(`/admin/destinations/edit/${destination._id}`)}>
                     ✏️ Edit
                   </button>
 
-                  <button
-                    type="button"
-                    className="admin-destination-delete"
-                    onClick={() =>
-                      handleDelete(destination._id)
-                    }
-                  >
+                  <button type="button" className="admin-destination-delete" onClick={() => handleDelete(destination._id)}>
                     🗑️ Delete
                   </button>
                 </div>

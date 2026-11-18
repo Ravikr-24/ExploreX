@@ -8,14 +8,12 @@ import "../styles/travelPlans.css";
 function TravelPlans() {
   const { token } = useSelector((state) => state.auth);
 
-  // =========================
-  // STATE
-  // =========================
+
 
   const [travelPlans, setTravelPlans] = useState([]);
   const [destinations, setDestinations] = useState([]);
 
-  // Form states
+
   const [title, setTitle] = useState("");
   const [selectedDestinations, setSelectedDestinations] =
     useState([]);
@@ -28,7 +26,7 @@ function TravelPlans() {
   const [budget, setBudget] = useState("");
   const [notes, setNotes] = useState("");
 
-  // Loading states
+
   const [loading, setLoading] = useState(true);
   const [destinationsLoading, setDestinationsLoading] =
     useState(true);
@@ -36,17 +34,14 @@ function TravelPlans() {
   const [creating, setCreating] = useState(false);
   const [updating, setUpdating] = useState(false);
 
-  // Edit state
+
   const [editingPlanId, setEditingPlanId] =
     useState(null);
 
-  // Messages
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // =========================
-  // GET TODAY'S DATE
-  // =========================
 
   const getTodayDate = () => {
     const today = new Date();
@@ -64,9 +59,7 @@ function TravelPlans() {
     return `${year}-${month}-${day}`;
   };
 
-  // =========================
-  // FETCH TRAVEL PLANS
-  // =========================
+
 
   const fetchTravelPlans = async () => {
     try {
@@ -85,9 +78,7 @@ function TravelPlans() {
     }
   };
 
-  // =========================
-  // FETCH DESTINATIONS
-  // =========================
+
 
   const fetchDestinations = async () => {
     try {
@@ -108,9 +99,6 @@ function TravelPlans() {
     }
   };
 
-  // =========================
-  // INITIAL DATA FETCH
-  // =========================
 
   useEffect(() => {
     if (!token) {
@@ -123,9 +111,7 @@ function TravelPlans() {
     fetchDestinations();
   }, [token]);
 
-  // =========================
-  // FILTER DESTINATIONS
-  // =========================
+
 
   const filteredDestinations =
     destinations.filter((destination) => {
@@ -147,9 +133,7 @@ function TravelPlans() {
       );
     });
 
-  // =========================
-  // SELECT / REMOVE DESTINATION
-  // =========================
+
 
   const handleDestinationSelection = (
     destinationId
@@ -170,9 +154,6 @@ function TravelPlans() {
     });
   };
 
-  // =========================
-  // RESET FORM
-  // =========================
 
   const resetForm = () => {
     setTitle("");
@@ -186,9 +167,6 @@ function TravelPlans() {
     setEditingPlanId(null);
   };
 
-  // =========================
-  // EDIT TRAVEL PLAN
-  // =========================
 
   const handleEdit = (plan) => {
     setError("");
@@ -240,9 +218,6 @@ function TravelPlans() {
     });
   };
 
-  // =========================
-  // CANCEL EDIT
-  // =========================
 
   const handleCancelEdit = () => {
     resetForm();
@@ -251,9 +226,6 @@ function TravelPlans() {
     setSuccess("");
   };
 
-  // =========================
-  // CREATE / UPDATE PLAN
-  // =========================
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -261,9 +233,6 @@ function TravelPlans() {
     setError("");
     setSuccess("");
 
-    // -------------------------
-    // Title validation
-    // -------------------------
 
     if (!title.trim()) {
       setError(
@@ -273,9 +242,6 @@ function TravelPlans() {
       return;
     }
 
-    // -------------------------
-    // Destination validation
-    // -------------------------
 
     if (
       selectedDestinations.length === 0
@@ -287,9 +253,6 @@ function TravelPlans() {
       return;
     }
 
-    // -------------------------
-    // Date validation
-    // -------------------------
 
     if (!startDate || !endDate) {
       setError(
@@ -301,7 +264,7 @@ function TravelPlans() {
 
     const today = getTodayDate();
 
-    // Start date cannot be in past
+
     if (startDate < today) {
       setError(
         "Start date cannot be in the past."
@@ -310,7 +273,7 @@ function TravelPlans() {
       return;
     }
 
-    // End date cannot be in past
+
     if (endDate < today) {
       setError(
         "End date cannot be in the past."
@@ -319,7 +282,7 @@ function TravelPlans() {
       return;
     }
 
-    // End date cannot be before start date
+
     if (endDate < startDate) {
       setError(
         "End date cannot be before start date."
@@ -327,10 +290,6 @@ function TravelPlans() {
 
       return;
     }
-
-    // -------------------------
-    // Budget validation
-    // -------------------------
 
     if (
       budget === "" ||
@@ -344,9 +303,7 @@ function TravelPlans() {
       return;
     }
 
-    // -------------------------
-    // Data to send
-    // -------------------------
+
 
     const planData = {
       title: title.trim(),
@@ -358,9 +315,7 @@ function TravelPlans() {
       notes: notes.trim(),
     };
 
-    // =========================
-    // UPDATE EXISTING PLAN
-    // =========================
+
 
     if (editingPlanId) {
       setUpdating(true);
@@ -387,9 +342,7 @@ function TravelPlans() {
       return;
     }
 
-    // =========================
-    // CREATE NEW PLAN
-    // =========================
+
 
     setCreating(true);
 
@@ -414,9 +367,7 @@ function TravelPlans() {
     }
   };
 
-  // =========================
-  // DELETE TRAVEL PLAN
-  // =========================
+
 
   const handleDelete = async (planId) => {
     const confirmed =
@@ -457,9 +408,6 @@ function TravelPlans() {
     }
   };
 
-  // =========================
-  // NOT LOGGED IN
-  // =========================
 
   if (!token) {
     return (
@@ -482,9 +430,6 @@ function TravelPlans() {
     );
   }
 
-  // =========================
-  // MAIN UI
-  // =========================
 
   return (
     <main className="travel-plans-page">

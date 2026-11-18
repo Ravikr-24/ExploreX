@@ -1,3 +1,5 @@
+const cloudinary = require("../config/cloudinary");
+
 const Destination = require("../models/Destination");
 const isValidObjectId = require("../utils/validateObjectId");
 const escapeRegex = require("../utils/escapeRegex");
@@ -263,11 +265,77 @@ const deleteDestination = async (req, res, next) => {
     next(error);
   }
 };
+const addAttractionImages = async (req, res, next) => {
+  try {
+    const { id, attractionId } = req.params;
 
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({
+        message: "Please select at least one image",
+      });
+    }
+
+    const destination = await Destination.findById(id);
+
+    if (!destination) {
+      return res.status(404).json({
+        message: "Destination not found",
+      });
+    }
+
+    const attraction = destination.attractions.find(
+      (item) => item._id.toString() === attractionId
+    );
+
+    if (!attraction) {
+      return res.status(404).json({
+        message: "Attraction not found",
+      });
+    }
+
+    const uploadPromises = req.files.map((file) => {
+      return new Promise((resolve, reject) => {
+        const uploadStream = cloudinary.uploader.upload_stream(
+          {
+            folder: "explorex/attractions",
+            resource_type: "image",
+          },
+          (error, result) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(result.secure_url);
+            }
+          }
+        );
+
+        uploadStream.end(file.buffer);
+      });
+    });
+
+    const uploadedImages = await Promise.all(uploadPromises);
+
+    attraction.images.push(...uploadedImages);
+
+    await destination.save();
+
+    res.status(200).json({
+      message: "Attraction images uploaded successfully",
+      attraction: {
+        id: attraction._id,
+        name: attraction.name,
+        images: attraction.images,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   createDestination,
   getDestinations,
   getDestinationById,
   updateDestination,
   deleteDestination,
+  addAttractionImages,
 };

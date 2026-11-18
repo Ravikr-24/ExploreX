@@ -28,9 +28,7 @@ function EditDestination() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // ========================================
-  // CONVERT ATTRACTION / ACTIVITY TO TEXT
-  // ========================================
+
 
   const formatItemsWithImages = (items) => {
     if (!Array.isArray(items)) {
@@ -55,30 +53,21 @@ function EditDestination() {
 
           const images = Array.isArray(item.images)
             ? item.images
-              .filter(
-                (image) =>
-                  typeof image === "string"
-              )
+              .filter((image) => typeof image === "string")
               .map((image) => image.trim())
               .filter(Boolean)
               .slice(0, 3)
               .join(", ")
             : "";
 
-          return images
-            ? `${name} | ${images}`
-            : name;
+          return images ? `${name} | ${images}` : name;
         }
-
         return "";
       })
       .filter(Boolean)
       .join("\n");
   };
 
-  // ========================================
-  // FETCH DESTINATION
-  // ========================================
 
   useEffect(() => {
     const fetchDestination = async () => {
@@ -86,42 +75,26 @@ function EditDestination() {
         setLoading(true);
         setError("");
 
-        const response = await api.get(
-          `/destinations/${id}`
-        );
-
-        const destination =
-          response.data.destination;
+        const response = await api.get(`/destinations/${id}`);
+        const destination = response.data.destination;
 
         setFormData({
           name: destination.name || "",
-
           description:
             destination.description || "",
-
           location:
             destination.location || "",
-
           category:
             destination.category || "",
-
-          images: Array.isArray(
-            destination.images
-          )
-            ? destination.images
-              .filter(Boolean)
-              .join(", ")
-            : "",
+          images: Array.isArray(destination.images) ? destination.images
+            .filter(Boolean)
+            .join(", ") : "",
 
           attractions:
-            formatItemsWithImages(
-              destination.attractions
-            ),
+            formatItemsWithImages(destination.attractions),
 
           activities:
-            formatItemsWithImages(
-              destination.activities
-            ),
+            formatItemsWithImages(destination.activities),
 
           bestTimeToVisit:
             destination.bestTimeToVisit || "",
@@ -144,22 +117,12 @@ function EditDestination() {
     }
   }, [id, token]);
 
-  // ========================================
-  // HANDLE INPUT CHANGE
-  // ========================================
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    setFormData((previousData) => ({
-      ...previousData,
-      [name]: value,
-    }));
+    setFormData((previousData) => ({ ...previousData, [name]: value, }));
   };
 
-  // ========================================
-  // PARSE ATTRACTIONS / ACTIVITIES
-  // ========================================
 
   const parseItemsWithImages = (value) => {
     if (!value.trim()) {
@@ -171,11 +134,8 @@ function EditDestination() {
       .map((item) => item.trim())
       .filter(Boolean)
       .map((item) => {
-        const [namePart, imagesPart = ""] =
-          item.split("|");
-
+        const [namePart, imagesPart = ""] = item.split("|");
         const name = namePart.trim();
-
         const images = imagesPart
           .split(",")
           .map((image) => image.trim())
@@ -183,16 +143,13 @@ function EditDestination() {
           .slice(0, 3);
 
         return {
-          name,
-          images,
+          name, images,
         };
       })
       .filter((item) => item.name);
   };
 
-  // ========================================
-  // HANDLE SUBMIT
-  // ========================================
+  /*  HANDLE SUBMIT */
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -200,7 +157,7 @@ function EditDestination() {
     setError("");
     setSuccess("");
 
-    // Required field validation
+     /* Required field validation */
     if (
       !formData.name.trim() ||
       !formData.description.trim() ||
@@ -214,11 +171,9 @@ function EditDestination() {
       return;
     }
 
-    // Budget validation
-    const budgetValue = Number(
-      formData.budget
-    );
+     /* Budget validation */
 
+    const budgetValue = Number(formData.budget);
     if (
       !Number.isFinite(budgetValue) ||
       budgetValue < 0
@@ -229,7 +184,8 @@ function EditDestination() {
       return;
     }
 
-    // Authorization check
+     /* Authorization check */
+
     if (!token) {
       setError(
         "You are not authorized. Please login again."
@@ -243,38 +199,26 @@ function EditDestination() {
       const destinationData = {
         name: formData.name.trim(),
 
-        description:
-          formData.description.trim(),
+        description: formData.description.trim(),
 
-        location:
-          formData.location.trim(),
+        location: formData.location.trim(),
 
-        category:
-          formData.category.trim(),
+        category: formData.category.trim(),
 
-        images: formData.images
-          .split(",")
+        images: formData.images.split(",")
           .map((item) => item.trim())
           .filter(Boolean),
 
-        attractions:
-          parseItemsWithImages(
-            formData.attractions
-          ),
+        attractions: parseItemsWithImages(formData.attractions),
 
-        activities:
-          parseItemsWithImages(
-            formData.activities
-          ),
+        activities: parseItemsWithImages(formData.activities),
 
-        bestTimeToVisit:
-          formData.bestTimeToVisit.trim(),
+        bestTimeToVisit: formData.bestTimeToVisit.trim(),
 
         budget: budgetValue,
       };
 
-      await api.put(
-        `/destinations/${id}`,
+      await api.put(`/destinations/${id}`,
         destinationData,
         {
           headers: {
@@ -296,9 +240,7 @@ function EditDestination() {
     }
   };
 
-  // ========================================
-  // LOADING
-  // ========================================
+  /* LOADING */
 
   if (loading) {
     return (
@@ -309,9 +251,7 @@ function EditDestination() {
     );
   }
 
-  // ========================================
-  // ERROR WHILE LOADING
-  // ========================================
+   /* ERROR WHILE LOADING */
 
   if (error && !formData.name) {
     return (
@@ -319,30 +259,15 @@ function EditDestination() {
         <div className="edit-destination-message edit-destination-error">
           ⚠️ {error}
         </div>
-
-        <button
-          type="button"
-          className="edit-destination-cancel"
-          onClick={() =>
-            navigate("/admin/destinations")
-          }
-        >
+        <button type="button" className="edit-destination-cancel" onClick={() => navigate("/admin/destinations")}>
           Back to Destinations
         </button>
       </main>
     );
   }
 
-  // ========================================
-  // UI
-  // ========================================
-
   return (
     <main className="edit-destination-page">
-      {/* ========================================
-          HEADER
-      ======================================== */}
-
       <header className="edit-destination-header">
         <p className="edit-destination-label">
           EXPLOREX ADMIN PANEL
@@ -354,19 +279,7 @@ function EditDestination() {
           Update the destination information below.
         </p>
       </header>
-
-      {/* ========================================
-          FORM
-      ======================================== */}
-
-      <form
-        className="edit-destination-form"
-        onSubmit={handleSubmit}
-      >
-        {/* ========================================
-            BASIC INFORMATION
-        ======================================== */}
-
+      <form className="edit-destination-form" onSubmit={handleSubmit}>
         <section className="edit-destination-section">
           <h2 className="edit-destination-section-title">
             Basic Information
@@ -380,18 +293,8 @@ function EditDestination() {
           {/* Name */}
 
           <div className="edit-destination-group">
-            <label htmlFor="name">
-              Destination Name *
-            </label>
-
-            <input
-              id="name"
-              name="name"
-              type="text"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
+            <label htmlFor="name">  Destination Name *    </label>
+            <input id="name" name="name" type="text" value={formData.name} onChange={handleChange} required />
           </div>
 
           {/* Description */}
@@ -419,29 +322,13 @@ function EditDestination() {
                 Location *
               </label>
 
-              <input
-                id="location"
-                name="location"
-                type="text"
-                value={formData.location}
-                onChange={handleChange}
-                required
-              />
+              <input id="location" name="location" type="text" value={formData.location} onChange={handleChange} required />
             </div>
 
             <div className="edit-destination-group">
-              <label htmlFor="category">
-                Category *
-              </label>
+              <label htmlFor="category">  Category * </label>
 
-              <input
-                id="category"
-                name="category"
-                type="text"
-                value={formData.category}
-                onChange={handleChange}
-                required
-              />
+              <input id="category" name="category" type="text" value={formData.category} onChange={handleChange} required />
             </div>
           </div>
 
@@ -449,47 +336,21 @@ function EditDestination() {
 
           <div className="edit-destination-row">
             <div className="edit-destination-group">
-              <label htmlFor="budget">
-                Budget *
-              </label>
+              <label htmlFor="budget">   Budget *  </label>
 
-              <input
-                id="budget"
-                name="budget"
-                type="number"
-                min="0"
-                value={formData.budget}
-                onChange={handleChange}
-                placeholder="e.g. 15000"
-                required
-              />
+              <input id="budget" name="budget" type="number" min="0" value={formData.budget} onChange={handleChange} placeholder="e.g. 15000" required />
             </div>
 
             <div className="edit-destination-group">
-              <label htmlFor="bestTimeToVisit">
-                Best Time to Visit
-              </label>
-
-              <input
-                id="bestTimeToVisit"
-                name="bestTimeToVisit"
-                type="text"
-                value={formData.bestTimeToVisit}
-                onChange={handleChange}
-                placeholder="October to March"
-              />
+              <label htmlFor="bestTimeToVisit"> Best Time to Visit </label>
+              <input id="bestTimeToVisit" name="bestTimeToVisit" type="text" value={formData.bestTimeToVisit} onChange={handleChange} placeholder="October to March" />
             </div>
           </div>
         </section>
 
-        {/* ========================================
-            DESTINATION IMAGES
-        ======================================== */}
 
         <section className="edit-destination-section">
-          <h2 className="edit-destination-section-title">
-            Destination Images
-          </h2>
+          <h2 className="edit-destination-section-title">  Destination Images </h2>
 
           <p className="edit-destination-section-description">
             Update the images displayed for this
@@ -497,19 +358,8 @@ function EditDestination() {
           </p>
 
           <div className="edit-destination-group">
-            <label htmlFor="images">
-              Image URLs
-            </label>
-
-            <input
-              id="images"
-              name="images"
-              type="text"
-              value={formData.images}
-              onChange={handleChange}
-              placeholder="URL 1, URL 2, URL 3"
-            />
-
+            <label htmlFor="images">  Image URLs  </label>
+            <input id="images" name="images" type="text" value={formData.images} onChange={handleChange} placeholder="URL 1, URL 2, URL 3" />
             <small className="edit-destination-help">
               Separate multiple destination images
               with commas.
@@ -517,9 +367,6 @@ function EditDestination() {
           </div>
         </section>
 
-        {/* ========================================
-            ATTRACTIONS
-        ======================================== */}
 
         <section className="edit-destination-section">
           <h2 className="edit-destination-section-title">
@@ -532,21 +379,14 @@ function EditDestination() {
           </p>
 
           <div className="edit-destination-group">
-            <label htmlFor="attractions">
-              Attractions
-            </label>
+            <label htmlFor="attractions"> Attractions </label>
 
-            <textarea
-              id="attractions"
-              name="attractions"
-              value={formData.attractions}
-              onChange={handleChange}
+            <textarea id="attractions" name="attractions" value={formData.attractions} onChange={handleChange}
               placeholder={`Example:
 Hadimba Temple | url1, url2, url3
 Solang Valley | url4, url5
 Rohtang Pass | url6, url7, url8`}
-              rows="7"
-            />
+              rows="7" />
 
             <small className="edit-destination-help">
               Add one attraction per line.
@@ -584,11 +424,7 @@ Rohtang Pass | url6, url7, url8`}
               Activities
             </label>
 
-            <textarea
-              id="activities"
-              name="activities"
-              value={formData.activities}
-              onChange={handleChange}
+            <textarea id="activities" name="activities" value={formData.activities} onChange={handleChange}
               placeholder={`Example:
 Paragliding | url1, url2
 Trekking | url3, url4, url5
@@ -614,9 +450,7 @@ River Rafting | url6, url7`}
           </div>
         </section>
 
-        {/* ========================================
-            MESSAGES
-        ======================================== */}
+
 
         {error && (
           <div className="edit-destination-message edit-destination-error">
@@ -630,27 +464,14 @@ River Rafting | url6, url7`}
           </div>
         )}
 
-        {/* ========================================
-            ACTIONS
-        ======================================== */}
+
 
         <div className="edit-destination-actions">
-          <button
-            type="button"
-            className="edit-destination-cancel"
-            onClick={() =>
-              navigate("/admin/destinations")
-            }
-            disabled={saving}
-          >
+          <button type="button" className="edit-destination-cancel" onClick={() => navigate("/admin/destinations")} disabled={saving}>
             Cancel
           </button>
 
-          <button
-            type="submit"
-            className="edit-destination-submit"
-            disabled={saving}
-          >
+          <button type="submit" className="edit-destination-submit" disabled={saving} >
             {saving
               ? "Saving Changes..."
               : "Update Destination"}

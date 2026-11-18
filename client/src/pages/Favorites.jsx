@@ -116,9 +116,7 @@ function Favorites() {
           <div className="favorites-count">
             <span>{favorites.length}</span>
             <small>
-              {favorites.length === 1
-                ? "Saved Destination"
-                : "Saved Destinations"}
+              {favorites.length === 1 ?"Saved Destination": "Saved Destinations"}
             </small>
           </div>
         )}
@@ -155,10 +153,7 @@ function Favorites() {
             favorites here.
           </p>
 
-          <Link
-            to="/explore"
-            className="favorites-explore-button"
-          >
+          <Link to="/explore" className="favorites-explore-button">
             Explore Destinations
             <span>→</span>
           </Link>
@@ -176,18 +171,11 @@ function Favorites() {
             const destinationId = destination._id;
 
             return (
-              <article
-                className="favorite-card"
-                key={favorite._id}
-              >
+              <article className="favorite-card" key={favorite._id} >
                 {/* Image */}
                 <div className="favorite-card-image-wrapper">
                   {destination.images?.[0] ? (
-                    <img
-                      src={destination.images[0]}
-                      alt={destination.name}
-                      className="favorite-card-image"
-                    />
+                    <img src={destination.images[0]} alt={destination.name} className="favorite-card-image"/>
                   ) : (
                     <div className="favorite-card-image-placeholder">
                       <span>🏔️</span>
@@ -203,18 +191,13 @@ function Favorites() {
                   )}
 
                   {/* Remove button */}
-                  <button
-                    type="button"
-                    className="favorite-remove-button"
+                  <button  type="button" className="favorite-remove-button"
                     onClick={() =>
                       handleRemoveFavorite(destinationId)
                     }
-                    disabled={
-                      removingId === destinationId
-                    }
+                    disabled={removingId === destinationId }
                     aria-label={`Remove ${destination.name} from favorites`}
-                    title="Remove from favorites"
-                  >
+                    title="Remove from favorites">
                     {removingId === destinationId
                       ? "..."
                       : "♥"}

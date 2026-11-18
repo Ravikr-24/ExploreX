@@ -214,6 +214,9 @@ ExploreX/
 └── package.json
 🗄️ Database Models
 
+
+
+
 ExploreX uses MongoDB with the following main collections:
 
 User

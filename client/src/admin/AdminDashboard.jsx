@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -5,7 +6,7 @@ import { useSelector } from "react-redux";
 import api from "../services/api";
 import "../styles/adminDashboard.css";
 
-function AdminDashboard() {
+export default function AdminDashboard() {
   const { token } = useSelector((state) => state.auth);
 
   const [stats, setStats] = useState({
@@ -34,7 +35,7 @@ function AdminDashboard() {
       } catch (error) {
         setError(
           error.response?.data?.message ||
-            "Failed to load dashboard statistics."
+          "Failed to load dashboard statistics."
         );
       } finally {
         setLoading(false);
@@ -68,7 +69,6 @@ function AdminDashboard() {
 
   return (
     <main className="admin-dashboard">
-      {/* Dashboard Header */}
       <header className="admin-dashboard-header">
         <p className="admin-dashboard-label">
           EXPLOREX ADMIN PANEL
@@ -82,49 +82,38 @@ function AdminDashboard() {
         </p>
       </header>
 
-      {/* Statistics */}
       <section className="admin-stats-grid">
         <article className="admin-stat-card">
           <div className="admin-stat-icon">👥</div>
-
           <h2>{stats.users}</h2>
-
           <p>Total Users</p>
         </article>
 
         <article className="admin-stat-card">
           <div className="admin-stat-icon">📍</div>
-
           <h2>{stats.destinations}</h2>
-
           <p>Total Destinations</p>
         </article>
 
         <article className="admin-stat-card">
           <div className="admin-stat-icon">⭐</div>
-
           <h2>{stats.reviews}</h2>
-
           <p>Total Reviews</p>
         </article>
 
         <article className="admin-stat-card">
           <div className="admin-stat-icon">🗺️</div>
-
           <h2>{stats.travelPlans}</h2>
-
           <p>Total Travel Plans</p>
         </article>
       </section>
 
-      {/* Management */}
       <section className="admin-management">
         <div className="admin-management-header">
           <h2>Management</h2>
 
           <p>
-            Choose an area to manage your ExploreX
-            application.
+            Choose an area to manage your ExploreX application.
           </p>
         </div>
 
@@ -143,6 +132,14 @@ function AdminDashboard() {
           >
             <span>Add Destination</span>
             <span>+</span>
+          </Link>
+
+          <Link
+            to="/admin/images"
+            className="admin-management-link"
+          >
+            <span>Manage Images</span>
+            <span>🖼️</span>
           </Link>
 
           <Link
@@ -165,5 +162,3 @@ function AdminDashboard() {
     </main>
   );
 }
-
-export default AdminDashboard;

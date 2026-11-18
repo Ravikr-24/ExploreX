@@ -34,7 +34,7 @@ function Explore() {
     fetchDestinations();
   }, []);
 
-  // Get unique categories
+
   const categories = [
     "All",
     ...new Set(
@@ -44,23 +44,23 @@ function Explore() {
     ),
   ];
 
-  // Search + Category + Budget + Rating filtering
+
   const filteredDestinations = destinations.filter((destination) => {
     const searchText = search.toLowerCase().trim();
 
-    // Search filter
+
     const matchesSearch =
       destination.name.toLowerCase().includes(searchText) ||
       destination.location.toLowerCase().includes(searchText) ||
       destination.category.toLowerCase().includes(searchText);
 
-    // Category filter
+
     const matchesCategory =
       category === "All" ||
       destination.category.toLowerCase() ===
         category.toLowerCase();
 
-    // Budget filter
+
     let matchesBudget = true;
 
     if (budget === "under10k") {
@@ -77,7 +77,7 @@ function Explore() {
       matchesBudget = destination.budget > 50000;
     }
 
-    // Rating filter
+
     let matchesRating = true;
 
     if (rating !== "All") {
@@ -93,7 +93,7 @@ function Explore() {
     );
   });
 
-  // Loading state
+
   if (loading) {
     return (
       <main className="explore-page">
@@ -104,7 +104,7 @@ function Explore() {
     );
   }
 
-  // Error state
+
   if (error) {
     return (
       <main className="explore-page">

@@ -7,16 +7,16 @@ import "./App.css";
 
 
 
-// Components
+ /* Components */
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
 
-// Redux
+/* Redux */
 import { logout } from "./redux/authSlice";
 
-// Public Pages
+/* Public Pages */
 import Home from "./pages/Home";
 import Explore from "./pages/Explore";
 import DestinationDetails from "./pages/DestinationDetails";
@@ -27,26 +27,27 @@ import Favorites from "./pages/Favorites";
 import TravelPlans from "./pages/TravelPlans";
 import NotFound from "./pages/NotFound";
 
-// Admin Pages
+/* Admin Pages */
 import AdminDashboard from "./admin/AdminDashboard";
 import AdminDestinations from "./admin/AdminDestinations";
 import AddDestination from "./admin/AddDestination";
 import EditDestination from "./admin/EditDestination";
 import AdminUsers from "./admin/AdminUsers";
 import AdminReviews from "./admin/AdminReviews";
+import ImageManagement from "./admin/ImageManagement";
 
 
-// Handles automatic logout when the JWT becomes invalid
+/*  Handles automatic logout when the JWT becomes invalid */
 function AuthHandler() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleAuthLogout = () => {
-      // Clear authentication state from Redux
+   /* Clear authentication state from Redux */
       dispatch(logout());
 
-      // Redirect user to login page
+       /* Redirect user to login page */
       navigate("/login", {
         replace: true,
       });
@@ -170,6 +171,15 @@ function App() {
           element={
             <AdminRoute>
               <EditDestination />
+            </AdminRoute>
+          }
+        />
+
+         <Route
+          path="/admin/images"
+          element={
+            <AdminRoute>
+              <ImageManagement />
             </AdminRoute>
           }
         />

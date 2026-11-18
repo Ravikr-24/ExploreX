@@ -12,10 +12,6 @@ function AdminReviews() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // ========================================
-  // FETCH REVIEWS
-  // ========================================
-
   const fetchReviews = async () => {
     try {
       setLoading(true);
@@ -46,9 +42,6 @@ function AdminReviews() {
     }
   }, [token]);
 
-  // ========================================
-  // DELETE REVIEW
-  // ========================================
 
   const handleDelete = async (reviewId) => {
     const confirmed = window.confirm(
@@ -84,9 +77,6 @@ function AdminReviews() {
     }
   };
 
-  // ========================================
-  // LOADING
-  // ========================================
 
   if (loading) {
     return (
@@ -98,9 +88,6 @@ function AdminReviews() {
     );
   }
 
-  // ========================================
-  // ERROR
-  // ========================================
 
   if (error && reviews.length === 0) {
     return (
@@ -123,11 +110,6 @@ function AdminReviews() {
       </main>
     );
   }
-
-  // ========================================
-  // MAIN UI
-  // ========================================
-
   return (
     <main className="admin-reviews">
       {/* ====================================

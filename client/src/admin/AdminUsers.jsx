@@ -13,11 +13,6 @@ function AdminUsers() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
-  // ========================================
-  // FETCH USERS
-  // ========================================
-
   const fetchUsers = async () => {
     try {
       setLoading(true);
@@ -31,7 +26,6 @@ function AdminUsers() {
 
       const allUsers = response.data.users || [];
 
-      // Don't show the currently logged-in admin
       const otherUsers = allUsers.filter(
         (user) => user._id !== currentUser?.id
       );
@@ -55,9 +49,6 @@ function AdminUsers() {
     }
   }, [token]);
 
-  // ========================================
-  // DELETE USER
-  // ========================================
 
   const handleDelete = async (userId) => {
     const confirmed = window.confirm(
@@ -90,9 +81,6 @@ function AdminUsers() {
     }
   };
 
-  // ========================================
-  // LOADING
-  // ========================================
 
   if (loading) {
     return (
@@ -103,10 +91,6 @@ function AdminUsers() {
       </main>
     );
   }
-
-  // ========================================
-  // ERROR
-  // ========================================
 
   if (error && users.length === 0) {
     return (
@@ -129,11 +113,6 @@ function AdminUsers() {
       </main>
     );
   }
-
-  // ========================================
-  // MAIN UI
-  // ========================================
-
   return (
     <main className="admin-users">
       {/* ====================================
